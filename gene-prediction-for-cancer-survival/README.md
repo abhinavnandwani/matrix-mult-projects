@@ -1,18 +1,18 @@
-## Data Fitting vs. Sparsity Tradeoff
+# Data Fitting vs. Sparsity Tradeoff
 
 This assignment explores sparse regularization in a least squares problem using the `BreastCancer.mat` dataset. The dataset contains gene expression levels from 295 patients, with 8141 genes as features. The goal is to analyze the tradeoff between data-fitting and sparsity in the context of Lasso regression.
 
-### Background
+## Background
 
 The journal article *[A Gene-Expression Signature as a Predictor of Survival in Breast Cancer](https://www.nejm.org/doi/full/10.1056/NEJMoa021967)* (NEJM, 2002) provides significant insights into how gene expression profiles can predict patient outcomes in breast cancer. The study presents a gene-expression signature that correlates with survival rates, emphasizing the importance of specific genes in prognosis.
 
-#### Key Components of the Article:
+### Key Components of the Article:
 - **Objective:** To identify a set of genes whose expression levels predict survival in breast cancer patients.
 - **Methods:** Utilizes microarray technology to analyze gene expression profiles and employs statistical models to identify predictive gene signatures.
 - **Findings:** Identifies a 70-gene signature associated with patient survival, demonstrating the potential of gene-expression profiles in prognostic assessments.
 - **Relevance:** The study highlights the role of gene selection in improving predictive models, which is directly applicable to the Lasso regression problem we are addressing.
 
-### Problem Statement
+## Problem Statement
 
 We seek to solve the Lasso problem:
 
@@ -22,7 +22,7 @@ $$
 
 where \(\mathbf{w}\) represents the weight vector for the gene expression levels. The regularization parameter \(\lambda\) controls the tradeoff between fitting the data well and achieving sparsity in the weight vector.
 
-### Methodology
+## Methodology
 
 Scripts are provided to implement the iterative soft-thresholding algorithm using proximal gradient descent to solve the Lasso problem. The algorithm is designed to handle varying values of \(\lambda\) efficiently through a hot start procedure. This approach uses the converged solution from one \(\lambda\) value as the initial guess for the next, accelerating convergence when subsequent \(\lambda\) values lead to similar solutions.
 
@@ -38,7 +38,9 @@ The code implements the Iterative Soft-Thresholding Algorithm (ISTA) to solve La
 
 The `ista_solve_hot` function solves the Lasso regression problem:
 
-\[ \text{Minimize} \; ||Ax - d||_2^2 + \lambda \; ||x||_1 \]
+$$
+\text{Minimize} \; ||Ax - d||_2^2 + \lambda \; ||x||_1
+$$
 
 where:
 - \(A\) is the design matrix.
@@ -87,5 +89,3 @@ The residuals plot illustrates how the fit of the model varies with \(\lambda\).
 ## Conclusion
 
 The iterative soft-thresholding approach with hot start effectively solves the Lasso regression problem, providing insights into the trade-offs between model sparsity and fit. This method is computationally efficient and suitable for handling a range of \(\lambda\) values in practice.
-
-
